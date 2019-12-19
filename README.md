@@ -10,17 +10,16 @@ This was ideated and created by Seth Tillis @sdtilliss as part of his 2019 Summe
 
 1) Clone or download the repo to your computer.
 
-There are two files that require editing: `index.html` and `script.js` They can be edited in any text editor or IDE. Check out [Sublime](https://www.sublimetext.com/) or [atom](https://atom.io/) if you don't have a text editor already
+* There are two files that require editing: `index.html` and `script.js` They can be edited in any text editor or IDE. Check out [Sublime](https://www.sublimetext.com/) or [atom](https://atom.io/) if you don't have a text editor already
 
 2) Once cloned/downloaded open up `index.html` and integrate the Braze SDK by following the instructions on our [github] (https://github.com/Appboy/appboy-web-sdk#getting-started). Be sure to change the  base URL [initialization](https://js.appboycdn.com/web-sdk/2.4/doc/module-appboy.html#.initialize) options to target our staging environment sondheim.braze.com.
 
-3) Now that you have the SDK loaded, click on the `index.html` file to open it in your browser. Open your developer console (CMD + Option + J on Chrome/Mac) and type in `appboy` you should see a response that looks like 
+3) Now that you have the SDK loaded, click on the `index.html` file to open it in your browser. Open your developer console (CMD + Option + J on Chrome/Mac) and type in `appboy` you should see a response that looks like the below which means you've successfully implemented. If you don't see that response, check step 1 again. 
 
 ```
 {AF: ƒ, initialize: ƒ, destroy: ƒ, getDeviceId: ƒ, toggleAppboyLogging: ƒ, …}
 ```
 
-Which means you've successfully implemented. If you don't see that response, check step 1 again. 
 
 4) Next, you'll want to go through the `script.js` file to add the Braze SDK methods to the javascript to actually collect user data in Braze when you click on the buttons. Throughout the `script.js` file, you'll find comments that tell you what to do. Example:
 
