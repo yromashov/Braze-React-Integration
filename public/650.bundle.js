@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkbraze_web_sdk_tutorial=self.webpackChunkbraze_web_sdk_tutorial||[]).push([[650],{4650:(e,a,t)=>{t.r(a),t.d(a,{requestImmediateDataFlush:()=>s});var r=t(3774);function s(e){r.ZP.rr()&&r.ZP.mr().requestImmediateDataFlush(e)}}}]);
-//# sourceMappingURL=650.bundle.js.map
