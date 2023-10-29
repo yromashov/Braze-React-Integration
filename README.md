@@ -1,4 +1,4 @@
-Braze integrated into a React app with Express in the backend.
+**Braze integrated into a React app with Express in the backend.**
 
 To get started,
 
