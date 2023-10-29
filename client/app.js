@@ -21,10 +21,10 @@ import {
 
 const App = () => {
   const [keys, setKeys] = useState({
-    sdkEndpoint: "your sdk endpoint here",
-    appIdentifierApiKey: "your app identifier here",
-    apiEndpoint: "your rest api endpoint here",
-    restApiKey: "your rest api key here",
+    sdkEndpoint: "your sdk endpoint here",   
+    appIdentifierApiKey: "your app identifier here",    
+    apiEndpoint: "your rest api endpoint here",    
+    restApiKey: "your rest api key here",    
   });
 
   useEffect(() => {
@@ -105,13 +105,9 @@ const App = () => {
 
   const [user, setUser] = useState("");
 
-  const [values, setValues] = useState({
-    userId: "",
-  });
+  const [userValue, setUserValue] = useState("");
 
-  const [value2, setValue2] = useState({
-    email: "",
-  });
+  const [emailValue, setEmailValue] = useState("");
 
   const [firstName, setFirstName] = useState("");
 
@@ -121,18 +117,12 @@ const App = () => {
 
   const handleIdInputChange = (event) => {
     event.persist();
-    setValues((values) => ({
-      ...values,
-      userId: event.target.value,
-    }));
+    setUserValue(event.target.value);
   };
 
   const handleEmailInputChange = (event) => {
     event.persist();
-    setValue2((value2) => ({
-      ...value2,
-      email: event.target.value,
-    }));
+    setEmailValue(event.target.value);
   };
 
   const handleFirstNameInputChange = (event) => {
@@ -176,18 +166,18 @@ const App = () => {
     showContentCards();
   };
 
-  const handleSubmit = (e) => {
+  const handleUserSubmit = (e) => {
     e.preventDefault();
-    changeUser(values.userId);
-    setUser(values.userId);
-    setValues({ userId: "" });
+    changeUser(userId);
+    setUser(userId);
+    setUserValue("");
   };
 
   const handleEmailSubmit = async (e) => {
     e.preventDefault();
-    getUser().setEmail(value2.email);
-    logCustomEvent(`Updated Email to ${value2.email}`);
-    setValue2({ email: "" });
+    getUser().setEmail(email);
+    logCustomEvent(`Updated Email to ${email}`);
+    setEmailValue("");
   };
 
   const handleFirstNameSubmit = (e) => {
@@ -228,17 +218,17 @@ const App = () => {
         type="text"
         placeholder="Chosen ID"
         name="userId"
-        value={values.userId}
+        value={userValue}
         onChange={handleIdInputChange}
       />
-      <button onClick={handleSubmit}>Change User</button>
+      <button onClick={handleUserSubmit}>Change User</button>
       <br />
       <br />
       <input
         type="text"
         placeholder="Your email"
         name="email"
-        value={value2.email}
+        value={emailValue}
         onChange={handleEmailInputChange}
       />
       <button onClick={handleEmailSubmit}>Change Email</button>
