@@ -20,25 +20,39 @@ import {
 } from "@braze/web-sdk";
 
 const App = () => {
+  const [keys, setKeys] = useState({
+    sdkEndpoint: "your sdk endpoint here",
+    appIdentifierApiKey: "your app identifier here",
+    apiEndpoint: "your rest api endpoint here",
+    restApiKey: "your rest api key here",
+  });
+
   useEffect(() => {
-    initialize("your API key here", {
+    initialize(keys.appIdentifierApiKey, {
       enableLogging: true,
-      baseUrl: "your SDK endpoint here",
+      baseUrl: keys.sdkEndpoint,
       serviceWorkerLocation: "/service-worker.js",
+      allowUserSuppliedJavascript: true,
     });
     automaticallyShowInAppMessages();
     requestContentCardsRefresh();
     openSession();
-    getUser().getUserId(function (userId) {
-      console.log("The user is " + userId);
-      setUser(userId);
-    });
+    let user = getUser().getUserId();
+    function settingUser(user) {
+      if (user == null) {
+        console.log("The user has not been identified yet");
+      } else {
+        console.log("The user is " + user);
+        setUser(user);
+      }
+    }
+    settingUser(user);
   }, []);
 
   const sendMessage = async () => {
     try {
       const res = await Axios.post(
-        "your REST API endpoint here/messages/send",
+        `https://${keys.apiEndpoint}/messages/send`,
         {
           external_user_ids: [`${user}`],
           messages: {
@@ -51,7 +65,7 @@ const App = () => {
         {
           headers: {
             "content-type": "application/json",
-            Authorization: "Bearer your API key here",
+            Authorization: `Bearer ${keys.restApiKey}`,
           },
         }
       );
@@ -63,7 +77,7 @@ const App = () => {
   const sendContentCard = async () => {
     try {
       const res = await Axios.post(
-        "your REST API endpoint here/messages/send",
+        `https://${keys.apiEndpoint}/messages/send`,
         {
           external_user_ids: [`${user}`],
           messages: {
@@ -78,10 +92,12 @@ const App = () => {
         {
           headers: {
             "content-type": "application/json",
-            Authorization: "Bearer your API key here",
+            Authorization: `Bearer ${keys.restApiKey}`,
           },
         }
       );
+      requestContentCardsRefresh();
+      requestImmediateDataFlush();
     } catch (err) {
       console.log(err);
     }
@@ -195,12 +211,17 @@ const App = () => {
     setColor("");
   };
 
-
   return (
     <div style={{ textAlign: "center" }}>
       <h1>Welcome to Ugene's Sample Braze React app</h1>
-      <h3>Made with React and Express in backend (with some Axios sprinkled in)</h3>
-      <h2>The user now is {user}</h2>
+      <h3>
+        Made with React and Express in backend (with some Axios sprinkled in)
+      </h3>
+      {user ? (
+        <h2>The user now is {user}</h2>
+      ) : (
+        <h2>The user has not been identified yet</h2>
+      )}
       <br />
       <br />
       <input
@@ -260,9 +281,7 @@ const App = () => {
       <button onClick={sendMeIAM}>Send me an IAM!</button>
       <br />
       <br />
-      <button onClick={sendMeContentCard}>
-        Send me a Content Card!
-      </button>
+      <button onClick={sendMeContentCard}>Send me a Content Card!</button>
     </div>
   );
 };

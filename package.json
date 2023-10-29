@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "@babel/preset-env": "^7.18.6",
-    "@braze/web-sdk": "^4.0.4",
+    "@braze/web-sdk": "^5.0.0",
     "axios": "^0.27.2",
     "body-parser": "^1.20.0",
     "express": "^4.18.1",
@@ -22,18 +22,18 @@
     "start": "node server",
     "start-dev": "webpack -w & nodemon server"
   },
-  "name": "braze-web-sdk-tutorial",
-  "description": "This site serves as a tutorial for how to get started integrating the Braze Web SDK.",
+  "name": "braze-react-integration",
+  "description": "This site has Braze integrated with React",
   "version": "1.0.0",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yromashov/Braze-Web-SDK-Tutorial.git"
+    "url": "git+https://github.com/yromashov/Braze-React-Integration"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/yromashov/Braze-Web-SDK-Tutorial/issues"
+    "url": "https://github.com/yromashov/Braze-React-Integration/issues"
   },
-  "homepage": "https://github.com/yromashov/Braze-Web-SDK-Tutorial#readme"
+  "homepage": "https://github.com/yromashov/Braze-React-Integration#readme"
 }
