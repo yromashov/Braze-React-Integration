@@ -31,5 +31,5 @@ You will now be able to see this site live if you go to http://localhost:3000/ i
 
 For reference:
 
-[Braze Docs](https://www.braze.com/docs/developer_guide/platform_integration_guides/web/initial_sdk_setup/)
+[Braze Docs](https://www.braze.com/docs/developer_guide/platform_integration_guides/web/initial_sdk_setup/)</br>
 [Braze Web SDK JS reference](https://js.appboycdn.com/web-sdk/5.0/doc/modules/braze.html)
