@@ -20,11 +20,12 @@ import {
 } from "@braze/web-sdk";
 
 const App = () => {
+
   const [keys, setKeys] = useState({
     sdkEndpoint: "your sdk endpoint here",   
     appIdentifierApiKey: "your app identifier here",    
     apiEndpoint: "your rest api endpoint here",    
-    restApiKey: "your rest api key here",    
+    restApiKey: "your rest api key here",       
   });
 
   useEffect(() => {
@@ -168,15 +169,15 @@ const App = () => {
 
   const handleUserSubmit = (e) => {
     e.preventDefault();
-    changeUser(userId);
-    setUser(userId);
+    changeUser(userValue);
+    setUser(userValue);
     setUserValue("");
   };
 
   const handleEmailSubmit = async (e) => {
     e.preventDefault();
-    getUser().setEmail(email);
-    logCustomEvent(`Updated Email to ${email}`);
+    getUser().setEmail(emailValue);
+    logCustomEvent(`Updated Email to ${emailValue}`);
     setEmailValue("");
   };
 
