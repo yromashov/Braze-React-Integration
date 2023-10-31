@@ -22,10 +22,10 @@ import {
 const App = () => {
 
   const [keys, setKeys] = useState({
-    sdkEndpoint: "https://sdk.iad-03.braze.com",
-    appIdentifierApiKey: "dbd0e0f5-c4ec-4c30-875a-91c2e5f6007e",
-    apiEndpoint: "https://rest.iad-03.braze.com",
-    restApiKey: "b07aafd2-80a9-459b-86ae-1aaf5d11df48"       
+    sdkEndpoint: "your sdk endpoint here",   
+    appIdentifierApiKey: "your app identifier here",    
+    apiEndpoint: "your rest api endpoint here",    
+    restApiKey: "your rest api key here",    
   });
 
   useEffect(() => {
