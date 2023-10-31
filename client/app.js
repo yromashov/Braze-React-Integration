@@ -22,10 +22,10 @@ import {
 const App = () => {
 
   const [keys, setKeys] = useState({
-    sdkEndpoint: "your sdk endpoint here",   
-    appIdentifierApiKey: "your app identifier here",    
-    apiEndpoint: "your rest api endpoint here",    
-    restApiKey: "your rest api key here",       
+    sdkEndpoint: "https://sdk.iad-03.braze.com",
+    appIdentifierApiKey: "dbd0e0f5-c4ec-4c30-875a-91c2e5f6007e",
+    apiEndpoint: "https://rest.iad-03.braze.com",
+    restApiKey: "b07aafd2-80a9-459b-86ae-1aaf5d11df48"       
   });
 
   useEffect(() => {
@@ -53,7 +53,7 @@ const App = () => {
   const sendMessage = async () => {
     try {
       const res = await Axios.post(
-        `https://${keys.apiEndpoint}/messages/send`,
+        `${keys.apiEndpoint}/messages/send`,
         {
           external_user_ids: [`${user}`],
           messages: {
@@ -78,7 +78,7 @@ const App = () => {
   const sendContentCard = async () => {
     try {
       const res = await Axios.post(
-        `https://${keys.apiEndpoint}/messages/send`,
+        `${keys.apiEndpoint}/messages/send`,
         {
           external_user_ids: [`${user}`],
           messages: {
@@ -266,13 +266,21 @@ const App = () => {
       <button onClick={handleColorSubmit}>Submit</button>
       <br />
       <br />
-      <button onClick={handleRegisterPushClick}>Send me a push!</button>
-      <br />
-      <br />
       <button onClick={sendMeIAM}>Send me an IAM!</button>
       <br />
       <br />
-      <button onClick={sendMeContentCard}>Send me a Content Card!</button>
+      {user ? (
+        <div>
+              <button onClick={handleRegisterPushClick}>Send me a push!</button>
+              <br />
+              <br />
+              <button onClick={sendMeContentCard}>Send me a Content Card!</button>
+              <br />
+              <br />
+              </div>
+      ) : (
+        <h2>Change your user to view Push and Content Card options!</h2>
+      )}
     </div>
   );
 };
